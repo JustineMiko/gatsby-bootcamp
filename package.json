@@ -14,12 +14,20 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
+    "contentful": "^8.1.8",
     "gatsby": "^2.26.1",
     "gatsby-plugin-sass": "^3.2.0",
+    "gatsby-plugin-sharp": "^2.14.3",
+    "gatsby-remark-images": "^3.11.1",
+    "gatsby-remark-relative-images": "^2.0.2",
+    "gatsby-source-contentful": "~3.0.0",
     "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-source-strapi": "^0.0.12",
     "gatsby-transformer-remark": "^2.16.1",
     "node-sass": "^5.0.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^16.12.0",
     "sass": "^1.32.8"
   },

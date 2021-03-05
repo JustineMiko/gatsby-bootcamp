@@ -5,6 +5,8 @@ date: "2019-04-04"
 
 I just launch a new bootcamp !
 
+![hedylamarr](./HedyLamarr-02_blog.jpeg)
+
 ## Topics Covered
 
 1. Gatsby
