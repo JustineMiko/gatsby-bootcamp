@@ -10,7 +10,7 @@ require("dotenv").config({
  
 module.exports = {
   siteMetadata: {
-    title: 'Votre expert en Marketplace',
+    title: 'La Pilule Rouge',
     author: 'Justine Miko'
   },
   plugins: [
@@ -41,19 +41,7 @@ module.exports = {
               maxWidth: 750,
               linkImagesToOriginal: false
             }
-          },
-          {
-            resolve: `gatsby-source-strapi`,
-            options: {
-              apiURL: `http://localhost:1337`,
-              contentTypes: [`article`, `user`],
-              // Possibility to login with a strapi user, when content types are not publically available (optional).
-              loginData: {
-                identifier: "",
-                password: "",
-              },
-            },
-          },
+          }
         ]
       }
 

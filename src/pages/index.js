@@ -1,16 +1,55 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+
 
 import Layout from '../components/layout'
+
+import blogStyles from './blog.module.scss'
+import indexStyles from './index.module.scss'
+
+
 
 
 const IndexPage = () => {
 
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulBlogPost (
+        sort: {
+          fields: publishedDate,
+          order: DESC
+        }
+      ){
+        edges {
+          node {
+            title
+            slug
+            publishedDate(formatString: "D/M/YYYY")
+          }
+        }
+      }
+    }
+  `)
+
+    
+
   return (
     <Layout>
-      <h1>Test</h1>
-      <h2>Ceci est un test gatsby</h2>
-      <p>Need a developper? <Link to="/contact">Contact Me</Link></p>
+    <div className={indexStyles.backgroundImage}>
+        <h2>Votre Expert en Market Place</h2>
+    </div>
+      <ol className={blogStyles.posts}>
+        {data.allContentfulBlogPost.edges.map((edge) => {
+          return (
+            <Link to={`/blog/${edge.node.slug}`}>
+              <li className={blogStyles.post}>
+                <h3>{edge.node.title}</h3>
+                <p>{edge.node.publishedDate}</p>
+              </li> 
+            </Link> 
+          )
+        })}
+      </ol>
     </Layout>
   )
 }

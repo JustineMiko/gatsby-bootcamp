@@ -1,8 +1,12 @@
 $fontcolor: black;
-$backgroundcolor: rgb(255,255,255);
+$backgroundcolor: white;
 ;
 
 * {
     color: $fontcolor;
     background-color: $backgroundcolor;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }

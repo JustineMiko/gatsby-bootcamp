@@ -34,12 +34,12 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="#home" className="font-weight-bold">Start-up</Nav.Link>
-                    <Nav.Link href="#link" className="font-weight-bold">Expertises</Nav.Link>
-                    <Nav.Link href="#link" className="font-weight-bold">L'équipe</Nav.Link>
+                    <Nav.Link href="./" className="font-weight-bold">Accueil</Nav.Link>
+                    <Nav.Link href="./blog" className="font-weight-bold">Blog</Nav.Link>
+                    <Nav.Link href="./about" className="font-weight-bold">L'équipe</Nav.Link>
                     </Nav>
                     <Form inline>
-                    <Button className="rounded-pill" variant="danger">Contactez-nous</Button>
+                    <Button className="rounded-pill" variant="danger" href="./contact">Contactez-nous</Button>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
@@ -50,14 +50,7 @@ const Header = () => {
                     {data.site.siteMetadata.title}
                 </Link>
             </h1>
-            <nav>
-                <ul className={headerStyles.navList}>
-                    <li><Link to='/' className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem}>Home</Link></li>
-                    <li><Link to='/about' className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem}>About</Link></li>
-                    <li><Link to='/blog' className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem}>Blog</Link></li>
-                    <li><Link to='/contact' className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem}>Contact</Link></li>
-                </ul>
-            </nav>
+
         </header>
     )
 }
