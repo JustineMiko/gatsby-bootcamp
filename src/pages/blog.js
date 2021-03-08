@@ -10,8 +10,8 @@ import blogStyles from './blog.module.scss'
 const BlogPage = () => {
 
   const data = useStaticQuery(graphql`
-    query {
-        allContentfulBlogPost ( sort: { fields: publishedDate, order: DESC } ) {
+    query ($skip: Int=0, $limit: Int=6) {
+        allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}, skip: $skip, limit: $limit) {
             edges {
                 node {
                     title
@@ -57,6 +57,8 @@ const BlogPage = () => {
                     )
                 })}
             </ol>
+
+
         </Layout>
     )
 }

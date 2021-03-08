@@ -1,5 +1,6 @@
 // const path à ajouter pour le slug (voir doc node.js path.basename)
-const path = require('path')
+const path = require('path');
+const { paginate } = require('gatsby-awesome-pagination');
 
 // module.exports.onCreateNode = ({ node, actions }) => {
 //     const { createNodeField } = actions
@@ -38,5 +39,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
                 slug: edge.node.slug
             }
         })
+    })
+
+    // Fetch your items (blog posts, categories, etc).
+    const blogPosts = doSomeMagic();
+
+    // Create your paginated pages
+    paginate({
+        createPage, // The Gatsby `createPage` function
+        items: blogPosts, // An array of objects
+        itemsPerPage: 6, // How many items you want per page
+        pathPrefix: '/blog', // Creates pages like `/blog`, `/blog/2`, etc
+        component: path.resolve('src/pages/blog.js'), // Just like `createPage()`
     })
 }
