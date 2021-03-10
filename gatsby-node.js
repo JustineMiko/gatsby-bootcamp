@@ -16,6 +16,8 @@ const { paginate } = require('gatsby-awesome-pagination');
 //     }
 // }
 
+
+//création des slug : 
 module.exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const blogTemplate = path.resolve('./src/templates/blog.js')
@@ -41,15 +43,32 @@ module.exports.createPages = async ({ graphql, actions }) => {
         })
     })
 
-    // Fetch your items (blog posts, categories, etc).
-    const blogPosts = doSomeMagic();
 
-    // Create your paginated pages
-    paginate({
-        createPage, // The Gatsby `createPage` function
-        items: blogPosts, // An array of objects
-        itemsPerPage: 6, // How many items you want per page
-        pathPrefix: '/blog', // Creates pages like `/blog`, `/blog/2`, etc
-        component: path.resolve('src/pages/blog.js'), // Just like `createPage()`
-    })
+    //Pagination:
+    exports.createPages = ({ actions, graphql }) => {
+        const { createPage } = actions;
+        // Fetch your items (blog posts, categories, etc).
+        const blogPosts = useStaticQuery(graphql`
+            query {
+                allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}) {
+                    edges {
+                        node {
+                            title
+                            slug
+                            publishedDate(formatString:"D/M/YYYY")
+                        }
+                    }
+                }
+            }
+        `);
+
+        // Create your paginated pages
+        paginate({
+            createPage, // The Gatsby `createPage` function
+            items: blogPosts.data.allContentfulBlogPost.edges, // An array of objects
+            itemsPerPage: 6, // How many items you want per page
+            pathPrefix: '/blog', // Creates pages like `/blog`, `/blog/2`, etc
+            component: path.resolve('./src/pages/blog.js'), // Just like `createPage()`
+        })
+    }
 }

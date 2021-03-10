@@ -1,52 +1,35 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
+import PropTypes from 'prop-types'
 
+import Pager from '../components/pager'
 import Layout from '../components/layout'
 
 import blogStyles from './blog.module.scss'
 
 
 
-const BlogPage = () => {
+const BlogPage = ({ pageContext }) => {
 
-  const data = useStaticQuery(graphql`
-    query ($skip: Int=0, $limit: Int=6) {
-        allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}, skip: $skip, limit: $limit) {
-            edges {
-                node {
-                    title
-                    slug
-                    publishedDate(formatString:"D/M/YYYY")
+    const blogSample = useStaticQuery(graphql`
+        query ($skip: Int=0, $limit: Int=6) {
+            allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}, skip: $skip, limit: $limit) {
+                edges {
+                    node {
+                        title
+                        slug
+                        publishedDate(formatString:"D/M/YYYY")
+                    }
                 }
             }
         }
-    }
-  `)
-    // const data = useStaticQuery(graphql`
-    //     query {
-    //         allMarkdownRemark {
-    //             edges {
-    //                 node {
-    //                     frontmatter {
-    //                         title
-    //                         date
-    //                     }
-    //                     fields {
-    //                         slug
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // `)
-
-    console.log(data)
+    `)
 
     return (
         <Layout>
             <h1>Blog</h1>
             <ol className={blogStyles.posts}>
-                {data.allContentfulBlogPost.edges.map((edge) => {
+                {blogSample.allContentfulBlogPost.edges.map((edge) => {
                     return (
                         <li className={blogStyles.post}>
                             <Link to={`/blog/${edge.node.slug}`}>
@@ -57,10 +40,14 @@ const BlogPage = () => {
                     )
                 })}
             </ol>
-
-
+            <Pager pageContext={pageContext} />
         </Layout>
     )
+}
+
+BlogPage.propTypes = {
+    data: PropTypes.object.isRequired,
+    pageContext: PropTypes.object.isRequired,
 }
 
 export default BlogPage
