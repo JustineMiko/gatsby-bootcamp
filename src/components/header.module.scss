@@ -1,11 +1,14 @@
+$fontcolor: black;
+$backgroundcolor: white;
 
 .header {
     padding: 1rem 0 3rem;
+    border : solid blue 2px;
 }
 
 
 .title {
-    color: #000000;
+    color: $fontcolor;
     font-size: 3rem;
     text-decoration: none;
 }
@@ -25,7 +28,7 @@
 }
 
 .nav-item:hover {
-    color: #666666;
+    color: pink;
 }
 
 .active-nav-item {

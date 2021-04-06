@@ -34,12 +34,12 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="./" className="font-weight-bold">Accueil</Nav.Link>
-                    <Nav.Link href="./blog" className="font-weight-bold">Blog</Nav.Link>
-                    <Nav.Link href="./about" className="font-weight-bold">L'équipe</Nav.Link>
+                    <Nav.Link href="/" className="font-weight-bold">Accueil</Nav.Link>
+                    <Nav.Link href="/blogList" className="font-weight-bold">Blog</Nav.Link>
+                    <Nav.Link href="/about" className="font-weight-bold">L'équipe</Nav.Link>
                     </Nav>
                     <Form inline>
-                    <Button className="rounded-pill" variant="danger" href="./contact">Contactez-nous</Button>
+                    <Button className="rounded-pill" variant="danger" href="/contact">Contactez-nous</Button>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
